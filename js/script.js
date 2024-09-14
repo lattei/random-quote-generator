@@ -1,6 +1,8 @@
 /******************************************
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
+
+I am attempting to go for an Exceeds Expectations Grade, if I fail, a Meet Expectations is fine.
 ******************************************/
 // For assistance: 
   // Check the "Project Resources" section of the project instructions
@@ -19,6 +21,7 @@ const quotes = [
   {
     quote: "Big words seldom accompany good deeds.",
     source: "Charlotte Whitton",
+    //EXCEEDS EXPECTATIONS REC: Added a "said when" property because I wanted to be silly
     said: "Someone said a big word."
 
   },
@@ -57,6 +60,7 @@ function getRandomQuote() {
 //Used to test getRandomQuote()
 // console.log(getRandomQuote());
 /***
+ * EXCEEDS EXPECTATIONS REQ:
  * Creating a variable to hold random Value and plugging that into our randomRGB function to get the background color.
  * getRGB function
  ***/
@@ -74,6 +78,7 @@ function getRandomRGB(value) {
  * It calls getRandomQuote from above and passes it through our If Else statements.
  * If else statements are created to check if quotes had a 3rd value that needed to be printed alongside it. 
  * Else condition runs if the object literal only has 2 key/value pairs.
+ * EXCEEDS EXPECTATIONS: added an elif for my custom property!
 ***/
 function printQuote() {
   let colorChange = getRandomRGB(randomValue);
@@ -94,11 +99,18 @@ function printQuote() {
   }
   //Used to test what printQuote() logged
   console.log(modifyHTML);
+  // EXCEEDS EXPECTATIONS REQ: Modifying the DOM to override CSS and change color when function is called
   document.body.style.backgroundColor = `${colorChange}`;
+  //Console logging what color was rolled
   console.log(colorChange);
   document.getElementById('quote-box').innerHTML = modifyHTML; 
 }
 
+/***
+ * EXCEEDS EXPECTATIONS REQ:
+ * Setting interval for printQuote method; it goes every 10 seconds.
+ ***/
+setInterval(printQuote, 10000);
 
 /***
  * click event listener for the print quote button

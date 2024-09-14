@@ -114,6 +114,7 @@ h1 {
   content: ", ";
   font-style: normal;
 }
+/* EXCEEDS EXPECTATIONS REQ: STYLE MODIFICATIONS FOR CUSTOM PROPERTY */
 .said:before {
   content: ", ";
   font-style: normal;
