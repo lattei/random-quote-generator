@@ -19,7 +19,7 @@ const quotes = [
   {
     quote: "Big words seldom accompany good deeds.",
     source: "Charlotte Whitton",
-    tags: "advice"
+    said: "Someone said a big word."
 
   },
   {
@@ -57,30 +57,45 @@ function getRandomQuote() {
 //Used to test getRandomQuote()
 // console.log(getRandomQuote());
 /***
+ * Creating a variable to hold random Value and plugging that into our randomRGB function to get the background color.
+ * getRGB function
+ ***/
+const randomValue = () => Math.floor(Math.random() * 256);
+function getRandomRGB(value) {
+  const color = `rgb(${value()},${value()},${value()})`;
+  return color;
+  
+}
+
+
+
+/***
  * `printQuote` function
  * It calls getRandomQuote from above and passes it through our If Else statements.
  * If else statements are created to check if quotes had a 3rd value that needed to be printed alongside it. 
  * Else condition runs if the object literal only has 2 key/value pairs.
 ***/
 function printQuote() {
+  let colorChange = getRandomRGB(randomValue);
   let toBePrinted = getRandomQuote();
   let modifyHTML = `
-  <p class="quotes">${toBePrinted.quote}</p>
+  <p class="quote">${toBePrinted.quote}</p>
   <p class="source">${toBePrinted.source}`;
   
   if (toBePrinted.year) {
     modifyHTML += `<span class="year">${toBePrinted.year}</span></p>`;
   } else if (toBePrinted.citation) {
     modifyHTML += `<span class="citation">${toBePrinted.citation}</span></p>`;
-  } else if (toBePrinted.tags) {
-    modifyHTML += `<span class="tags">${toBePrinted.tags}</span></p>`;
+  } else if (toBePrinted.said) {
+    modifyHTML += `<span class="said"> said when: ${toBePrinted.said}</span></p>`;
   // This statement runs if the quote has no 3rd property.
   } else {
     modifyHTML += `</p>`;
   }
   //Used to test what printQuote() logged
   console.log(modifyHTML);
-
+  document.body.style.backgroundColor = `${colorChange}`;
+  console.log(colorChange);
   document.getElementById('quote-box').innerHTML = modifyHTML; 
 }
 
